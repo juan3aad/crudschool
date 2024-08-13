@@ -1,0 +1,11 @@
+*.class
+*.jar
+*.war
+*.ear
+target/
+.metadata/
+.metadata/commons-microservicios/
+.metadata/microservicios-cursos/
+.metadata/microservicios-eureka/
+.metadata/microservicios-usuarios/
+.metadata/microservicios-zuul/
