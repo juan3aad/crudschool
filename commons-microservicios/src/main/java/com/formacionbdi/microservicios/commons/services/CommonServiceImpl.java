@@ -2,15 +2,19 @@ package com.formacionbdi.microservicios.commons.services;
 
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 
 import org.springframework.transaction.annotation.Transactional;
 
 
 
 
-public class CommonServiceImpl<E, R extends CrudRepository<E, Long>> implements CommonService<E> {
+public class CommonServiceImpl<E, R  extends CustomPagingAndSortingRepository<E, Long>> implements CommonService<E> {
+	
 	
 	@Autowired
 	protected R  repository; 
@@ -39,6 +43,12 @@ public class CommonServiceImpl<E, R extends CrudRepository<E, Long>> implements 
 	
 		repository.deleteById(id);
 
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Page<E> findAll(Pageable pageable) {
+		return repository.findAll(pageable);
 	}
 
 }

@@ -73,7 +73,8 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-
+		
+	
 		<dependency>
 			<groupId>com.formacionbdi.microservicios.commons.alumnos</groupId>
 			<artifactId>commons-alumnos</artifactId>

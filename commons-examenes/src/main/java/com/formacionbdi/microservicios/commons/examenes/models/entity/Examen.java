@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -25,6 +23,10 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.persistence.Transient;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 
 @Entity
@@ -36,7 +38,8 @@ public class Examen {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-
+	@NotEmpty
+	@Size(min= 4, max=30)
 	private String nombre;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -48,7 +51,12 @@ public class Examen {
 	private List<Pregunta> preguntas;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JsonIgnore 
+	@NotNull
 	private Asignatura asignatura;
+	
+	@Transient
+	private boolean respondido;
 	
 
 	public Examen() {
@@ -133,6 +141,14 @@ public class Examen {
 
 	public void setAsignatura(Asignatura asignatura) {
 		this.asignatura = asignatura;
+	}
+
+	public boolean isRespondido() {
+		return respondido;
+	}
+
+	public void setRespondido(boolean respondido) {
+		this.respondido = respondido;
 	}
 	
 	
