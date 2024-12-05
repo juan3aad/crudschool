@@ -4,6 +4,8 @@ package com.formacionbdi.microservicios.app.cursos.services;
 
 
 
+import org.springframework.web.bind.annotation.PathVariable;
+
 import com.formacionbdi.microservicios.app.cursos.models.entity.Curso;
 import com.formacionbdi.microservicios.commons.alumnos.models.entity.Alumno;
 import com.formacionbdi.microservicios.commons.services.CommonService;
@@ -14,5 +16,9 @@ public interface CursoService extends CommonService<Curso> {
 	public Iterable<Long> obtenerExamenesIdsConRespuestasAlumno(Long alumnoId);
 	
 	public Iterable<Alumno>obtenerAlumnosPorCurso(Iterable<Long> ids);
+	
+	public void eliminarCursoAlumnoPorId(Long id);
+	
+	
 
 }
