@@ -29,12 +29,17 @@ public class Asignatura {
 	
 	private String nombre;
 	
-	@JsonIgnoreProperties(value= {"hijos"})
+	//@JsonIgnoreProperties(value= {"hijos"})
+	@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler", "hijos"})
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Asignatura padre;
 	
+	/*
 	@JsonIgnoreProperties(value= {"padre"},allowSetters=true)
-	@OneToMany(fetch = FetchType.LAZY,mappedBy = "padre",cascade=CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "padre",cascade=CascadeType.ALL)*/
+	
+	@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler", "padre"}, allowSetters = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "padre", cascade = CascadeType.ALL)
 	private List<Asignatura> hijos;
 	
 

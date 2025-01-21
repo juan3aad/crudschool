@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.formacionbdi.microservicios")
 @EntityScan(basePackages = "com.formacionbdi.microservicios.commons.examenes.models.entity")
 public class MicroserviciosExamenesApplication {
 

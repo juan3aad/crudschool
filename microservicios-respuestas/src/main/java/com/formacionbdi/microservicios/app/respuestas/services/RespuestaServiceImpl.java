@@ -24,7 +24,6 @@ public class RespuestaServiceImpl extends CommonServiceImpl<Respuesta, Respuesta
 	@Override
 	@Transactional(readOnly = true)
 	public Iterable<Respuesta> findRespuestaByAlumnoByExamen(Long alumnoId, Long examenId) {
-		// TODO Auto-generated method stub
 		return repository.findRespuestaByAlumnoByExamen(alumnoId, examenId);
 	}
 

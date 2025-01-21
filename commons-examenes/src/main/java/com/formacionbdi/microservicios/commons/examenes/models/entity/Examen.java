@@ -50,9 +50,11 @@ public class Examen {
 	@OneToMany(mappedBy="examen",fetch =FetchType.LAZY,cascade=CascadeType.ALL,orphanRemoval = true)
 	private List<Pregunta> preguntas;
 	
+	
+	//@JsonIgnoreProperties(value= {"examenes"},allowSetters = true)
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JsonIgnore 
-	@NotNull
+	//@NotNull(message = "Loco esto esta mala")
+	//@JsonIgnore
 	private Asignatura asignatura;
 	
 	@Transient

@@ -28,6 +28,15 @@ public class Pregunta {
 	@JoinColumn(name="examen_id")
 	private Examen examen;
 	
+	 // Constructor por defecto
+    public Pregunta() {
+    }
+    
+    // Constructor con ID
+    public Pregunta(Long id) {
+        this.id = id;
+    }
+	
 	@Override
 	public boolean equals(Object obj) {
 		if(this==obj) {

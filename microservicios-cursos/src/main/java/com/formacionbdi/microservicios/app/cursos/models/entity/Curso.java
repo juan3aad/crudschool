@@ -51,14 +51,19 @@ public class Curso {
 	private List<CursoAlumno> cursoAlumnos;
 	
 	
+	@JsonIgnoreProperties(value = {"curso"},allowSetters = true)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "curso", cascade=CascadeType.ALL,orphanRemoval = true)
+	private List<CursoExamen> cursoExamenes;
+	
 
 	/*@OneToMany(fetch=FetchType.LAZY)
 	@JsonIgnore*/
 	@Transient
 	private List<Alumno> alumnos;
 	
-	@ManyToMany(fetch=FetchType.LAZY)
-	@JsonIgnore
+	/*@ManyToMany(fetch=FetchType.LAZY)
+	@JsonIgnore*/
+	@Transient
 	private List<Examen> examenes;
 	
 	@PrePersist
@@ -70,11 +75,20 @@ public class Curso {
 		this.alumnos = new ArrayList<>();
 		this.examenes= new ArrayList<>();
 		this.cursoAlumnos= new ArrayList<>();
+		this.cursoExamenes= new ArrayList<>();
 		
 	}
 
 	public Long getId() {
 		return id;
+	}
+
+	public List<CursoExamen> getCursoExamenes() {
+		return cursoExamenes;
+	}
+
+	public void setCursoExamenes(List<CursoExamen> cursoExamenes) {
+		this.cursoExamenes = cursoExamenes;
 	}
 
 	public void setId(Long id) {
@@ -146,10 +160,18 @@ public class Curso {
 	public void removeCursoAlumno(CursoAlumno cursoAlumno) {
 		this.cursoAlumnos.remove(cursoAlumno);
 	}
+	
+	public void addCursoExamen(CursoExamen cursoExamen) {
+		this.cursoExamenes.add(cursoExamen);
+	}
+	
+	public void removeCursoExamen(CursoExamen cursoExamen) {
+		this.cursoExamenes.remove(cursoExamen);
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(alumnos, createAt, cursoAlumnos, examenes, id, nombre);
+		return Objects.hash(alumnos, createAt, cursoAlumnos, examenes,cursoExamenes, id, nombre);
 	}
 
 

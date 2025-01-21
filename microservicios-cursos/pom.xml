@@ -32,11 +32,7 @@
 		<spring-cloud.version>2023.0.3</spring-cloud.version>
 	</properties>
 	<dependencies>
-		<dependency>
-			<groupId>com.formacionbdi.microservicios.commons.examenes</groupId>
-			<artifactId>commons-examenes</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		
 
 		<dependency>
 			<groupId>com.formacionbdi.microservicios.commons.controllers</groupId>
@@ -74,6 +70,8 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
+		
+		
 
 <!-- 
 		<dependency>
@@ -110,6 +108,13 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>
+				com.formacionbdi.microservicios.app.examenes
+			</groupId>
+			<artifactId>microservicios-examenes</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
